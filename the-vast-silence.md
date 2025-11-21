@@ -1,5 +1,5 @@
 Date: 11-19-25
-Title: The vast silence
+Title: The Vast Silence
 ---
 Does something excite you?
 
