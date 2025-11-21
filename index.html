@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ian Kim</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady() }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: #f9f8f1;
+            font-family: 'Crimson Pro', serif;
+            color: #2a2a2a;
+            line-height: 1.65;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 80px 20px;
+            scroll-behavior: smooth; 
+        }
+
+        #main-container { width: 100%; max-width: 700px; }
+
+        header.profile { margin-bottom: 4rem; }
+        header.profile h1 { font-size: 1.8rem; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 0.2rem; }
+        header.profile p { font-size: 1.1rem; color: #666; font-style: italic; }
+
+        .post-entry { margin-bottom: 2.5rem; scroll-margin-top: 20px; }
+
+        .post-head { cursor: pointer; display: block; user-select: none; position: relative; }
+        .post-head:hover .post-title { color: #555; }
+        .meta-date { font-family: 'Crimson Pro', serif; font-size: 0.95rem; color: #888; display: block; margin-bottom: 0.2rem; font-variant-numeric: oldstyle-nums; }
+        .title-row { display: flex; align-items: center; gap: 12px; }
+        .post-title { font-size: 1.7rem; font-weight: 600; display: inline-block; transition: color 0.2s; letter-spacing: -0.01em;}
+
+        .copy-btn { opacity: 0; background: none; border: none; cursor: pointer; color: #aaa; padding: 4px; display: flex; align-items: center; transition: opacity 0.2s, color 0.2s; }
+        .post-head:hover .copy-btn { opacity: 1; }
+        .copy-btn:hover { color: #555; }
+
+        .post-body { display: none; margin-top: 1.5rem; animation: fadeIn 0.4s ease-in-out; }
+        .post-entry.open .post-body { display: block; }
+        .post-entry.open .post-title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: #bbb; }
+
+        .post-body p { margin-bottom: 1.5rem; text-align: left; }
+        
+        .post-body a { color: #8b2222; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+        .post-body a:hover { color: #550000; background-color: rgba(139, 34, 34, 0.05); }
+
+        .post-body :not(pre) > code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85em;
+            background-color: #e8e6dc;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #444;
+        }
+
+        .post-body pre {
+            background-color: #e8e6dc;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #d0cec0;
+        }
+        
+        .post-body pre code {
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            background-color: transparent;
+            padding: 0;
+            color: #333;
+        }
+        
+        .post-body img { max-width: 100%; height: auto; border-radius: 2px; opacity: 0.9; }
+
+        @media (max-width: 600px) {
+            body { padding-top: 40px; font-size: 18px; }
+            .copy-btn { opacity: 1; }
+            .post-body pre { padding: 10px; font-size: 13px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-container">
+        <header class="profile">
+            <h1>Ian Kim</h1>
+            <p>UT Austin computer science undergraduate.</p>
+        </header>
+
+        <div id="loading" style="text-align:center; color:#888; font-style:italic;">Fetching thoughts...</div>
+        <section id="feed"></section>
+    </div>
+
+    <script>
+        const USERNAME = 'iankmm';
+        const REPO = 'blogentry';
+
+        marked.use({
+            gfm: true, 
+            breaks: true
+        });
+
+        async function initBlog() {
+            const feed = document.getElementById('feed');
+            const loading = document.getElementById('loading');
+
+            try {
+                const response = await fetch(`https://api.github.com/repos/${USERNAME}/${REPO}/contents/`);
+                if (!response.ok) throw new Error('Failed to load repo contents');
+                const files = await response.json();
+                
+                const mdFiles = files.filter(file => 
+                    file.name.endsWith('.md') && 
+                    file.name.toLowerCase() !== 'readme.md'
+                );
+
+                const postsData = await Promise.all(mdFiles.map(async (file) => {
+                    const contentRes = await fetch(file.download_url);
+                    const text = await contentRes.text();
+                    return parsePost(text);
+                }));
+
+                postsData.sort((a, b) => b.dateObj - a.dateObj);
+
+                loading.style.display = 'none';
+                postsData.forEach(post => renderPost(post, feed));
+                handleDeepLink();
+
+            } catch (error) {
+                console.error(error);
+                loading.innerText = "Error loading posts.";
+            }
+        }
+
+        function parsePost(rawText) {
+            const lines = rawText.split('\n');
+            let title = 'Untitled';
+            let dateStr = '';
+            let contentStartIndex = 0;
+
+            for(let i=0; i<lines.length; i++) {
+                const line = lines[i].trim();
+                if (line.startsWith('Date:')) dateStr = line.replace('Date:', '').trim();
+                else if (line.startsWith('Title:')) title = line.replace('Title:', '').trim();
+                else if (line === '---') {
+                    contentStartIndex = i + 1;
+                    break;
+                }
+            }
+
+            const dateObj = new Date(dateStr);
+            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+            const rawBody = lines.slice(contentStartIndex).join('\n');
+            
+            const bodyHtml = marked.parse(rawBody);
+
+            return { title, slug, dateStr, dateObj, bodyHtml };
+        }
+
+        function renderMath(element) {
+            if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                MathJax.typesetPromise([element]).catch((err) => console.log('MathJax parsing error: ', err));
+            }
+        }
+
+        function renderPost(post, container) {
+            const article = document.createElement('article');
+            article.className = 'post-entry';
+            article.id = post.slug; 
+
+            article.innerHTML = `
+                <div class="post-head">
+                    <span class="meta-date">${formatDate(post.dateObj, post.dateStr)}</span>
+                    <div class="title-row">
+                        <h2 class="post-title">${post.title}</h2>
+                        <button class="copy-btn" aria-label="Copy link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="post-body">
+                    ${post.bodyHtml}
+                </div>
+            `;
+
+            const postHead = article.querySelector('.post-head');
+            const copyBtn = article.querySelector('.copy-btn');
+            const postBody = article.querySelector('.post-body');
+
+            postHead.addEventListener('click', (e) => {
+                if (e.target.closest('.copy-btn')) return;
+                const isOpen = article.classList.contains('open');
+                article.classList.toggle('open');
+                if (!isOpen) {
+                    setTimeout(() => article.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+                    renderMath(postBody);
+                }
+            });
+
+            copyBtn.addEventListener('click', async (e) => {
+                e.stopPropagation(); 
+                const url = `${window.location.origin}${window.location.pathname}#${post.slug}`;
+                try {
+                    await navigator.clipboard.writeText(url);
+                    const originalColor = copyBtn.style.color;
+                    copyBtn.style.color = "#333";
+                    setTimeout(() => { copyBtn.style.color = originalColor; }, 500);
+                    
+                    if (!article.classList.contains('open')) {
+                         article.classList.add('open');
+                         article.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                         renderMath(postBody);
+                    }
+                    history.pushState(null, null, `#${post.slug}`);
+                } catch (err) { console.error('Failed to copy', err); }
+            });
+
+            container.appendChild(article);
+            renderMath(article);
+        }
+
+        function handleDeepLink() {
+            const hash = window.location.hash.substring(1); 
+            if (!hash) return;
+            const targetPost = document.getElementById(hash);
+            if (targetPost) {
+                targetPost.classList.add('open');
+                renderMath(targetPost.querySelector('.post-body')); 
+                setTimeout(() => targetPost.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+            }
+        }
+
+        function formatDate(dateObj, originalStr) {
+            if (isNaN(dateObj)) return originalStr;
+            return dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        initBlog();
+    </script>
+</body>
+</html>
