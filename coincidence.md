@@ -1,0 +1,15 @@
+Date: 01-23-25
+Title: Coincidence
+Category: thoughts
+---
+We figure we’re in charge of where we’re headed. Yet it’s us picking the route. Our hands clutch the steering wheel tight. Then suddenly, the breeze shifts direction. Something small breaks, like a shoelace, at daybreak. The bus pulls off ten seconds ahead. You splash coffee on a clean shirt, end up ducking back in to swap it out. Since you turned around, you dodge the downpour. Maybe by going back, you bump into someone mid-hallway who flips your day sideways.
+
+We call it coincidence. Just a term we lean on when numbers feel overwhelming. When two unpredictable paths scrape against each other, that’s where it shows up. Instead of a neat path, life bends and twists. One close call after another, things bumping into each other by chance. Picture someone dear to you. Imagine how easily you might’ve never learned their name. Like if your granddad hadn’t gone left that Tuesday. If you hadn't chosen to head to that one party you felt like skipping, suddenly, staring into the deep hole spins your head.
+
+Some folks reckon everything’s planned out. Where one person spots chaos, another sees a woven pattern. To them, the cosmos works like an old clock. Each piece moves the next, driven by invisible pushes. Each tap means something. If you spot cash on the ground, people reckon it’s yours anyway. Lose your keys? Someone will call it practice for staying calm. Living this way feels right. Tough moments start seeming like pages in a tale.
+
+Some people call it random sound, particles smashing together, nothing more. Like tiny chaos blown up big time. It’s blind to who you are. Missing your ride? Totally irrelevant to space and time. Gravity pulls, momentum rolls, sometimes things go right by chance. That thought? It might scare you. Everything seems icy, distant. Still, there’s a kind of release here. No script means you hold the pen now. With no eyes on the sky, move how you want.
+
+Perhaps the answer’s halfway between. Or maybe we make sense of things only once they’ve happened. Humans crave patterns. Stare at clouds, spot a face. Gaze at constellations, imagine beasts or figures chasing them. We check our past, yet spot fate. Maybe wonder’s not inside the moment. Maybe meaning comes from how we tie moments to our heart. Stuff lines up by chance, still, we’re the ones deciding its value.
+
+So we move from day to day. Not just planning, but also stressing out. Always looking at the time. Yet what matters slips in around the edges. Like when you end up somewhere unexpected. Or your phone shuts off mid-use. It shows up when no one’s talking, mid-thought. Joy catches us off guard. Sadness trips us up outta nowhere. Yet we rise anyway, asking ourselves how this became real life. Not planned. Unpredictable. But ours to keep.
