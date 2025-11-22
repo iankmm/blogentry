@@ -1,5 +1,6 @@
 Date: 11-19-25
 Title: The Vast Silence
+Category: thoughts
 ---
 Does something excite you?
 

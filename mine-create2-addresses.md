@@ -1,5 +1,6 @@
 Date: 11-21-25
 Title: Hacking 350 dollars (legally) through CREATE2 mining
+Category: blockchain
 ---
 Earlier this month, I was randomly doomscrolling on Twitter and found [this tweet](https://x.com/0xKaden/status/1986850038912598185?s=20) by Kaden. He had deployed an on-chain CTF challenge loaded with 0.1 ETH, and whoever managed to exploit it could keep the fund.
 

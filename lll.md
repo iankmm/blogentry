@@ -1,5 +1,6 @@
 Date: 10-17-25
 Title: Solving integer relation using LLL
+Category: math
 ---
 The infamous integer relation problem is,
 
