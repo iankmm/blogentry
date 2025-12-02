@@ -1,4 +1,4 @@
-Date: 11-24-25
+Date: 12-02-25
 Title: Evanesce
 Category: thoughts
 ---
