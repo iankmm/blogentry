@@ -1,4 +1,4 @@
-Date: 11-19-25
+Date: 11-19-2025
 Title: The Vast Silence
 Category: thoughts
 ---
