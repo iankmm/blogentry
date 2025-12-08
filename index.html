@@ -171,7 +171,7 @@
             <h1>Ian Kim</h1>
             <p>Computer science undergraduate at the University of Texas at Austin. Interested in web security, cryptography, and writing.</p>
             <nav class="nav-links">
-                <a href="reading-list.html">Reading List</a>
+                <a href="reading-list.html">Check out my reading list →</a>
             </nav>
         </header>
 
@@ -209,7 +209,8 @@
 
                 const mdFiles = files.filter(file => 
                     file.name.endsWith('.md') && 
-                    file.name.toLowerCase() !== 'readme.md'
+                    file.name.toLowerCase() !== 'readme.md' &&
+                    file.name.toLowerCase() !== 'books.md'
                 );
 
                 const postsData = await Promise.all(mdFiles.map(async (file) => {
