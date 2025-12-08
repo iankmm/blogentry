@@ -41,7 +41,16 @@
 
         header.profile { margin-bottom: 4rem; }
         header.profile h1 { font-size: 1.8rem; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 0.2rem; }
-        header.profile p { font-size: 1.1rem; color: #666; font-style: italic; }
+        header.profile p { font-size: 1.1rem; color: #666; font-style: italic; margin-bottom: 0.8rem; }
+
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-links a {
+            font-size: 0.95rem;
+            color: #8b2222;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #550000; text-decoration: underline; }
 
         .post-entry { margin-bottom: 2.5rem; scroll-margin-top: 20px; }
 
@@ -161,6 +170,9 @@
         <header class="profile">
             <h1>Ian Kim</h1>
             <p>Computer science undergraduate at the University of Texas at Austin. Interested in web security, cryptography, and writing.</p>
+            <nav class="nav-links">
+                <a href="reading-list.html">Reading List</a>
+            </nav>
         </header>
 
         <div id="loading" style="text-align:center; color:#888; font-style:italic;">Fetching thoughts...</div>
