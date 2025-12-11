@@ -16,4 +16,9 @@ Title: 백명버튼
 Author: 김동식
 Progress: 100
 Status: completed
+---
+Title: Ragdoll
+Author: Daniel Cole
+Progress: 48
+Status: reading
 
