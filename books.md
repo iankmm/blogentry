@@ -4,8 +4,8 @@
 
 Title: 유령의 마음으로
 Author: 임선우
-Progress: 20
-Status: reading
+Progress: 100
+Status: completed
 ---
 Title: 비상문
 Author: 최진영
@@ -19,6 +19,12 @@ Status: completed
 ---
 Title: Ragdoll
 Author: Daniel Cole
-Progress: 48
-Status: reading
+Progress: 100
+Status: completed
+---
+Title: On the Origin of Time
+Author: Daniel Cole
+Progress: 100
+Status: completed
+
 
