@@ -23,8 +23,13 @@ Progress: 100
 Status: completed
 ---
 Title: On the Origin of Time
-Author: Daniel Cole
+Author: Thomas Hertog
 Progress: 100
 Status: completed
+---
+Title: Why We Remember
+Author: Charan Ranganath
+Progress: 58
+Status: reading
 
 
