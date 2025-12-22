@@ -29,7 +29,11 @@ Status: completed
 ---
 Title: Why We Remember
 Author: Charan Ranganath
-Progress: 58
+Progress: 100
+Status: completed
+===
+Title: The Light Eaters
+Author: Zoë Schlanger
+Progress: 73
 Status: reading
-
 
