@@ -31,9 +31,14 @@ Title: Why We Remember
 Author: Charan Ranganath
 Progress: 100
 Status: completed
-===
+---
 Title: The Light Eaters
 Author: Zoë Schlanger
-Progress: 73
+Progress: 100
+Status: completed
+---
+Title: False: How Mistrust, Disinformation, and Motivated Reasoning Make Us Believe Things that Aren't True
+Author:  Joe Pierre
+Progress: 32
 Status: reading
 
