@@ -41,4 +41,9 @@ Title: False: How Mistrust, Disinformation, and Motivated Reasoning Make Us Beli
 Author:  Joe Pierre
 Progress: 100
 Status: completed
+---
+Title: Portals to a New Reality
+Author: Vlatko Vedral
+Progress: 9
+Status: reading
 
