@@ -39,6 +39,6 @@ Status: completed
 ---
 Title: False: How Mistrust, Disinformation, and Motivated Reasoning Make Us Believe Things that Aren't True
 Author:  Joe Pierre
-Progress: 32
-Status: reading
+Progress: 100
+Status: completed
 
