@@ -23,3 +23,9 @@ In many different ways, this honestly feels like working on the next generation 
 
 
 So yeah! Very excited to work with them, and if anyone in SF wants to connect and meet up, lmk :)
+
+Also,
+$$
+10^18>10^100
+$$
+;)
