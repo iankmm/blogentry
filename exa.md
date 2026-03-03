@@ -2,7 +2,7 @@ Date: 03-02-2026
 Title: Joining Exa
 Category: thoughts
 ---
-I'll be joining [Exa](https://exa.ai/) to work with the infra and security team full time starting this year and I wanted to leave a few notes on my belief on the current state of llms and how Exa indefinitely exands their capabilities. 
+I'll be joining [Exa](https://exa.ai/) to work with the infra and security team full time starting this year and I wanted to leave a few notes on my belief on the current state of llms and how Exa indefinitely expands their capabilities. 
 
 
 
