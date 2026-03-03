@@ -1,4 +1,4 @@
-Date: 11-21-25
+Date: 11-21-2025
 Title: Hacking 350 dollars (legally) through CREATE2 mining
 Category: blockchain
 ---

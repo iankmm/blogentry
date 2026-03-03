@@ -1,4 +1,4 @@
-Date: 10-17-25
+Date: 10-17-2025
 Title: Solving integer relation using LLL
 Category: math
 ---
