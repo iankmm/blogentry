@@ -26,6 +26,6 @@ So yeah! Very excited to work with them, and if anyone in SF wants to connect an
 
 Also,
 $$
-10^18>10^100
+10^{18}>10^{100}
 $$
 ;)
