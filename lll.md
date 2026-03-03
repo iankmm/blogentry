@@ -2,6 +2,8 @@ Date: 10-17-2025
 Title: Solving integer relation using LLL
 Category: math
 ---
+*Note: Latex rendering is a bit broken rn :/ I'll fix it soon*
+
 The infamous integer relation problem is,
 
 **Problem.** (Integer Relation Problem) given $a_1,...,a_n\in\mathbb{R}$, finding a non-trivial solution $x_1,...,x_n\in\mathbb{Z}$ such that:
