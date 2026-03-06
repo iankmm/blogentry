@@ -284,6 +284,25 @@
             }
         });
 
+        function protectLatex(text) {
+            const placeholders = [];
+            // Protect display math ($$...$$) first
+            text = text.replace(/\$\$([\s\S]*?)\$\$/g, (match) => {
+                placeholders.push(match);
+                return `%%LATEX_${placeholders.length - 1}%%`;
+            });
+            // Protect inline math ($...$)
+            text = text.replace(/\$([^\$]+?)\$/g, (match) => {
+                placeholders.push(match);
+                return `%%LATEX_${placeholders.length - 1}%%`;
+            });
+            return { text, placeholders };
+        }
+
+        function restoreLatex(html, placeholders) {
+            return html.replace(/%%LATEX_(\d+)%%/g, (_, index) => placeholders[parseInt(index)]);
+        }
+
         function parsePost(rawText) {
             const lines = rawText.split('\n');
             let title = 'Untitled';
@@ -306,7 +325,8 @@
             const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
             const rawBody = lines.slice(contentStartIndex).join('\n');
 
-            const bodyHtml = marked.parse(rawBody);
+            const { text: protectedBody, placeholders } = protectLatex(rawBody);
+            const bodyHtml = restoreLatex(marked.parse(protectedBody), placeholders);
 
             return { title, slug, dateStr, dateObj, category, bodyHtml };
         }

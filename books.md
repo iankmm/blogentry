@@ -44,6 +44,22 @@ Status: completed
 ---
 Title: Portals to a New Reality
 Author: Vlatko Vedral
-Progress: 9
+Progress: 100
+Status: completed
+---
+Title: Nanjung ilgi
+Author: Admiral Yi Sun-sin
+Progress: 30
 Status: reading
+---
+Title: The Remains of the Day
+Author: Kazuo Ishiguro
+Progress: 80
+Status: reading
+--- 
+Title: The Last Unicorn
+Author: Peter S. Beagle
+Progress: 30
+Status: reading
+
 
